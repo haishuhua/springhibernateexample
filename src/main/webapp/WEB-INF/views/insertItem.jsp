@@ -6,8 +6,9 @@
 <html>
 
 <head>
-	
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<title>Insert Item Form</title>
 
 <style>
@@ -28,19 +29,19 @@
 		<table>
 			<tr>
 				<td><label for="name">Name: </label> </td>
-				<td><form:input path="name" id="name"/></td>
+				<td><form:input class="form-control" path="name" id="name"/></td>
 				<td><form:errors path="name" cssClass="error"/></td>
 		    </tr>
 	    
 			<tr>
 				<td><label for="price">Price: </label> </td>
-				<td><form:input path="price" id="price"/></td>
+				<td><form:input class="form-control" path="price" id="price"/></td>
 				<td><form:errors path="price" cssClass="error"/></td>
 		    </tr>
 	
 			<tr>
 				<td><label for="imgLink">Image: </label> </td>
-				<td><form:input path="imgLink" id="imgLink"/></td>
+				<td><form:input class="form-control" path="imgLink" id="imgLink"/></td>
 				<td><form:errors path="imgLink" cssClass="error"/></td>
 		    </tr>
 	
@@ -51,7 +52,7 @@
 							<input type="submit" value="Update"/>
 						</c:when>
 						<c:otherwise>
-							<input type="submit" value="Register"/>
+							<input type="submit" class="btn btn-lg btn-primary" value="Add"/>
 						</c:otherwise>
 					</c:choose>
 				</td>
@@ -60,6 +61,10 @@
 	</form:form>
 	<br/>
 	<br/>
-	Go back to <a href="<c:url value='/listItems' />">List of All Items</a>
+	Go back to <a href="<c:url value='allitems' />">List of All Items</a>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
