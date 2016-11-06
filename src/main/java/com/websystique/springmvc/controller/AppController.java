@@ -27,11 +27,18 @@ public class AppController {
 	
 	@Autowired
 	MessageSource messageSource;
+	
+	
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	public String navigation(ModelMap model) {
 
+		return "navigation";
+	}
+	
 	/*
 	 * This method will list all existing employees.
 	 */
-	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
+	@RequestMapping(value = {"/list" }, method = RequestMethod.GET)
 	public String listEmployees(ModelMap model) {
 
 		List<Employee> employees = service.findAllEmployees();
