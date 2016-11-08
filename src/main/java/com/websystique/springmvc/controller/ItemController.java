@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -94,13 +95,13 @@ public class ItemController {
 	/*
 	 * This method will provide the medium to update an existing Item.
 	 */
-//	@RequestMapping(value = { "/edit-{ImageLink}-Item" }, method = RequestMethod.GET)
-//	public String editItem(@PathVariable String ImageLink, ModelMap model) {
-//		Item Item = service.findItemByImageLink(ImageLink);
-//		model.addAttribute("Item", Item);
-//		model.addAttribute("edit", true);
-//		return "registration";
-//	}
+	@RequestMapping(value = { "/edit-{name}-item" }, method = RequestMethod.GET)
+	public String editItem(@PathVariable String name, ModelMap model) {
+		Item Item = service.findItemByName(name);
+		model.addAttribute("item", Item);
+		model.addAttribute("edit", true);
+		return "insertItem";
+	}
 	
 	/*
 	 * This method will be called on form submission, handling POST request for

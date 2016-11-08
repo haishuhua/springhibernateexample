@@ -144,6 +144,11 @@ public class AppController {
 	public String login() {
 		return "login";
 	}
+	
+	@RequestMapping(value = { "/navigation" }, method = RequestMethod.GET)
+	public String navigation() {
+		return "navigation";
+	}
 //	@Scope("session")
 //	@RequestMapping(value = { "/welcome" }, method = RequestMethod.POST)
 //	public String welcome(ModelMap model,HttpServletRequest request,HttpServletResponse response,@RequestBody MultiValueMap<String,String> formData) {
