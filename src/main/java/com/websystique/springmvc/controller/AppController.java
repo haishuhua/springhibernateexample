@@ -3,15 +3,20 @@ package com.websystique.springmvc.controller;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -134,5 +139,19 @@ public class AppController {
 		service.deleteEmployeeBySsn(ssn);
 		return "redirect:/list";
 	}
+	
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String login() {
+		return "login";
+	}
+//	@Scope("session")
+//	@RequestMapping(value = { "/welcome" }, method = RequestMethod.POST)
+//	public String welcome(ModelMap model,HttpServletRequest request,HttpServletResponse response,@RequestBody MultiValueMap<String,String> formData) {
+//		
+//				String wechatnumber =request.getParameter("wechatnumber"); 
+//				request.getSession().setAttribute("wechatnumber",wechatnumber);
+//				model.addAttribute("wechatnumber", wechatnumber);
+//		return "welcome";
+//	}
 
 }

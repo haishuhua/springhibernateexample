@@ -3,15 +3,20 @@ package com.websystique.springmvc.controller;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -55,8 +60,11 @@ public class UserController {
 	 * This method will be called on form submission, handling POST request for
 	 * saving User in database. It also validates the user input
 	 */
-	@RequestMapping(value = { "/insertUser" }, method = RequestMethod.POST)
+	@Scope("session")
+	@RequestMapping(value = { "/welcome" }, method = RequestMethod.POST)
 	public String saveUser(@Valid User User, BindingResult result,
+			HttpServletRequest request,HttpServletResponse response,
+			@RequestBody MultiValueMap<String,String> formData,
 			ModelMap model) {
 		
 		//logs debug message
@@ -87,7 +95,10 @@ public class UserController {
 		service.saveUser(User);
 
 		model.addAttribute("success", "User " + User.getName() + " inserted successfully");
-		return "successUser";
+		String wechatnumber =request.getParameter("wechatnumber"); 
+		request.getSession().setAttribute("wechatnumber",wechatnumber);
+		model.addAttribute("wechatnumber", wechatnumber);
+		return "welcome";
 	}
 
 
