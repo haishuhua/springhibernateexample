@@ -1,3 +1,4 @@
+//http://websystique.com/spring/spring-4-email-integration-tutorial/
 package com.websystique.springmvc.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
