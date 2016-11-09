@@ -29,8 +29,8 @@ html, body, .container {
 <title>${param.pageTitle}</title>
 </head>
 <body>
-	
+	<jsp:include page="navigation.jsp" />
 	<div class="container">
 		<div class="vertical-center-row">
 			<div align="center">
-			<jsp:include page="navigation.jsp" />
+				

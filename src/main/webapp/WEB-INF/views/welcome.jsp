@@ -2,6 +2,9 @@
 <jsp:include page="header.jsp">
 	<jsp:param name="pageTitle" value="Welcome" />
 </jsp:include>
+
+
+
 <h1>Welcome Form:</h1>
 
 <h2>Wechatnumber: ${wechatnumber} Points:</h2>
