@@ -6,6 +6,21 @@
 <h2>wechatnumber: ${wechatnumber}</h2>
 
 <div class="topTen">
+	<div class="newItems">
+		<h1>
+		New Items
+		</h1>
+		<table>
+		<th>Item</th><th>Description</th><th>Price</th><th></th>
+		<tr><td></td><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td><td></td></tr>
+		</table>
+		
+		
+	</div>
+
 	<table>
 		<th>Items</th>
 		<th>Sold</th>
