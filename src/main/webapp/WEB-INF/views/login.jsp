@@ -4,7 +4,14 @@
 </jsp:include>
 
 
+<div class="loginError">
+	<h1>Login Failed</h1>
+</div>
+
 <h1>Login Form:</h1>
+
+
+
 <form action="welcome" method="post" class="form-horizontal">
 	<input type="text" value="" placeholder="Enter WeChat Number"
 		class="form-control;col-xs-3" name="wechatnumber"> <br /> <br />

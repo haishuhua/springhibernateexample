@@ -44,6 +44,11 @@ public class UserController {
 		model.addAttribute("Users", Users);
 		return "allusers";
 	}
+	
+	@RequestMapping(value = {"/welcome" }, method = RequestMethod.GET)
+	public String welcome(ModelMap model) {
+		return "welcome";
+	}
 
 	/*
 	 * This method will provide the medium to add a new User.
