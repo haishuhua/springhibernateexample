@@ -20,7 +20,7 @@
 			<tr>
 			<td><a href="<c:url value='/edit-${item.name}-item' />">${item.name}</a></td>
 			<td>${item.price}</td>
-			<td>${item.imgLink}</td>
+			<td><a href="">${item.imgLink}</a></td>
 			<td><a href="<c:url value='/delete-${item.name}-item' />">Delete</a></td>
 			</tr>
 		</c:forEach>

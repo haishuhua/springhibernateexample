@@ -20,6 +20,11 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+
+	@NotNull
+	@Column(name = "categoryid", nullable = false)
+	private int categoryid;
+	
 	@NotNull
 	@Column(name = "name", nullable = false)
 	private String name;
