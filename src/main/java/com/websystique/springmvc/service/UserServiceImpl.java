@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.websystique.springmvc.dao.UserDaoImpl;
 import com.websystique.springmvc.model.User;
 
-@Service("UserService")
+@Service("userService")
 @Transactional
 public class UserServiceImpl implements UserService {
 

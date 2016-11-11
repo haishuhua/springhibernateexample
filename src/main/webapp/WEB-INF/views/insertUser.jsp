@@ -20,6 +20,12 @@
 				<td><form:input class="form-control" path="wechatnumber" id="wechatnumber"/></td>
 				<td><form:errors path="wechatnumber" cssClass="error"/></td>
 		    </tr>
+		    
+		    <tr>
+				<td><label for="password">Password: </label> </td>
+				<td><form:input class="form-control" path="password" id="password"/></td>
+				<td><form:errors path="password" cssClass="error"/></td>
+		    </tr>
 	
 			<tr>
 				<td><label for="address">Address: </label> </td>

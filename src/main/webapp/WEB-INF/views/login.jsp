@@ -3,11 +3,11 @@
 	<jsp:param name="pageTitle" value="Login" />
 </jsp:include>
 
-
-<div class="loginError">
+<c:if  test="${test == ''}">
+<div class="alert alert-danger">
 	<h1>Login Failed</h1>
 </div>
-
+</c:if>
 <h1>Login Form:</h1>
 
 

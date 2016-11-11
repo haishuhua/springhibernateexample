@@ -37,7 +37,7 @@ public class AppController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String navigation(ModelMap model) {
 
-		return "navigation";
+		return "welcome";
 	}
 	
 	/*
@@ -138,11 +138,6 @@ public class AppController {
 	public String deleteEmployee(@PathVariable String ssn) {
 		service.deleteEmployeeBySsn(ssn);
 		return "redirect:/list";
-	}
-	
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String login() {
-		return "login";
 	}
 	
 	@RequestMapping(value = { "/navigation" }, method = RequestMethod.GET)

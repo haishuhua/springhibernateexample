@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.websystique.springmvc.model.User;
 import com.websystique.springmvc.service.UserService;
+import com.websystique.springmvc.service.UserServiceImpl;
 @Controller
 @RequestMapping("/")
 public class UserController {
@@ -29,7 +30,7 @@ public class UserController {
 	private static final Logger logger = Logger.getLogger(UserController.class);
 	
 	@Autowired
-	UserService service;
+	UserServiceImpl userservice;
 	
 	@Autowired
 	MessageSource messageSource;
@@ -40,7 +41,7 @@ public class UserController {
 	@RequestMapping(value = {"/allusers" }, method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
 
-		List<User> Users = service.findAllUsers();
+		List<User> Users = userservice.findAllUsers();
 		model.addAttribute("Users", Users);
 		return "allusers";
 	}
@@ -91,13 +92,13 @@ public class UserController {
 		 * framework as well while still using internationalized messages.
 		 * 
 		 */
-		if(!service.isUserNameUnique(User.getId(), User.getName())){
+		if(!userservice.isUserNameUnique(User.getId(), User.getName())){
 			FieldError UserNameError =new FieldError("User","name",messageSource.getMessage("non.unique.username", new String[]{User.getName()}, Locale.getDefault()));
 		    result.addError(UserNameError);
 			return "insertUser";
 		}
 		
-		service.saveUser(User);
+		userservice.saveUser(User);
 
 		model.addAttribute("success", "User " + User.getName() + " inserted successfully");
 		String wechatnumber =request.getParameter("wechatnumber"); 
@@ -105,7 +106,37 @@ public class UserController {
 		model.addAttribute("wechatnumber", wechatnumber);
 		return "welcome";
 	}
-
+	
+	
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String login() {
+		return "login";
+	}
+	
+	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
+	public String loginCheck(HttpServletRequest request,HttpServletResponse respons,ModelMap model) {
+		String wechatnumber =request.getParameter("wechatnumber");
+		String password =request.getParameter("password");
+		//User user= userservice.findUserBywechatnumber(wechatnumber);
+		 model.addAttribute("error", "");
+		 if (1==1){
+			if (1==1)
+				//password.equals(user.getPassword())
+			{
+				request.getSession().setAttribute("wechatnumber",wechatnumber);
+			    model.addAttribute("wechatnumber", wechatnumber);
+		
+			}
+		}
+		else 
+		{
+			model.addAttribute("error", "Login Failed");
+		}
+		
+		
+		return "login";
+	}
+	
 
 	/*
 	 * This method will provide the medium to update an existing User.
