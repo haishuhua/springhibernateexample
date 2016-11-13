@@ -8,7 +8,8 @@
 <h1>Welcome Form:</h1>
 
 <h2>Wechatnumber: ${wechatnumber} Points:</h2>
-<h3>Check my orders</h3>
+<h3><a href="myprofile">My Profile</a></h3>
+<h3><a href="myorders">Check my orders</a></h3>
 <h3>Earn points</h3>
 <div class="topTen">
 	<div class="newItems">

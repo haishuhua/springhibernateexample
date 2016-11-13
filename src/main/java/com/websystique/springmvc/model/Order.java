@@ -22,10 +22,10 @@ public class Order {
 	private int id;
 
 	@Column(name = "itemid", nullable = false)
-	private String itemid;
+	private int itemid;
 	
 	@Column(name = "userid", nullable = false)
-	private String userid;
+	private int userid;
 	
 	@Column(name = "trackingnumber", nullable = false)
 	private String trackingnumber;
@@ -41,19 +41,19 @@ public class Order {
 		this.id = id;
 	}
 
-	public String getItemid() {
+	public int getItemid() {
 		return itemid;
 	}
 
-	public void setItemid(String itemid) {
+	public void setItemid(int itemid) {
 		this.itemid = itemid;
 	}
 
-	public String getUserid() {
+	public int getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 

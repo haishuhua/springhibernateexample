@@ -19,5 +19,7 @@ public interface UserService {
 	User findUserByName(String name);
 
 	boolean isUserNameUnique(Integer id, String name);
+
+	User findUserBywechatnumber(String wechatnumber);
 	
 }

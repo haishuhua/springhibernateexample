@@ -30,7 +30,7 @@ public class UserController {
 	private static final Logger logger = Logger.getLogger(UserController.class);
 	
 	@Autowired
-	UserServiceImpl userservice;
+	UserService userservice;
 	
 	@Autowired
 	MessageSource messageSource;
@@ -117,16 +117,15 @@ public class UserController {
 	public String loginCheck(HttpServletRequest request,HttpServletResponse respons,ModelMap model) {
 		String wechatnumber =request.getParameter("wechatnumber");
 		String password =request.getParameter("password");
-		//User user= userservice.findUserBywechatnumber(wechatnumber);
-		 model.addAttribute("error", "");
-		 if (1==1){
-			if (1==1)
-				//password.equals(user.getPassword())
-			{
+		User user= userservice.findUserBywechatnumber(wechatnumber);
+		logger.info(user.getWechatnumber()+"  "+" "+user.getPassword()); 
+		logger.info(user.getPassword()+"  "+" "+user.getPassword());
+		logger.info(password+"  "+" "+password);
+		model.addAttribute("error", "");
+		 if (user!=null && password.equals(user.getPassword())){
 				request.getSession().setAttribute("wechatnumber",wechatnumber);
 			    model.addAttribute("wechatnumber", wechatnumber);
-		
-			}
+			    return "welcome";
 		}
 		else 
 		{
@@ -135,6 +134,11 @@ public class UserController {
 		
 		
 		return "login";
+	}
+	
+	@RequestMapping(value = { "/myorders" }, method = RequestMethod.GET)
+	public String myorders() {
+		return "myorders";
 	}
 	
 

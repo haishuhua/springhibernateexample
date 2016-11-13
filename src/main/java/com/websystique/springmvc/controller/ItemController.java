@@ -25,7 +25,7 @@ public class ItemController {
 	private static final Logger logger = Logger.getLogger(ItemController.class);
 	
 	@Autowired
-	ItemService service;
+	ItemService itemService;
 	
 	@Autowired
 	MessageSource messageSource;
@@ -36,7 +36,7 @@ public class ItemController {
 	@RequestMapping(value = {"/allitems" }, method = RequestMethod.GET)
 	public String listItems(ModelMap model) {
 
-		List<Item> Items = service.findAllItems();
+		List<Item> Items = itemService.findAllItems();
 		model.addAttribute("Items", Items);
 		return "allitems";
 	}
@@ -50,6 +50,13 @@ public class ItemController {
 		model.addAttribute("item", Item);
 		model.addAttribute("edit", false);
 		return "insertItem";
+	}
+	
+	@RequestMapping(value = { "/orderitem" }, method = RequestMethod.GET)
+	public String orderItem(ModelMap model) {
+		List<Item> itemsList = itemService.findAllItems();
+		model.addAttribute("itemsList", itemsList);
+		return "orderitem";
 	}
 
 	/*
@@ -79,13 +86,13 @@ public class ItemController {
 		 * framework as well while still using internationalized messages.
 		 * 
 		 */
-		if(!service.isItemNameUnique(Item.getId(), Item.getName())){
+		if(!itemService.isItemNameUnique(Item.getId(), Item.getName())){
 			FieldError ItemNameError =new FieldError("Item","name",messageSource.getMessage("non.unique.itemname", new String[]{Item.getName()}, Locale.getDefault()));
 		    result.addError(ItemNameError);
 			return "insertItem";
 		}
 		
-		service.saveItem(Item);
+		itemService.saveItem(Item);
 
 		model.addAttribute("success", "Item " + Item.getName() + " inserted successfully");
 		return "successItem";
@@ -97,7 +104,7 @@ public class ItemController {
 	 */
 	@RequestMapping(value = { "/edit-{name}-item" }, method = RequestMethod.GET)
 	public String editItem(@PathVariable String name, ModelMap model) {
-		Item Item = service.findItemByName(name);
+		Item Item = itemService.findItemByName(name);
 		model.addAttribute("item", Item);
 		model.addAttribute("edit", true);
 		return "insertItem";

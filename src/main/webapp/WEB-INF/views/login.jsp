@@ -3,7 +3,7 @@
 	<jsp:param name="pageTitle" value="Login" />
 </jsp:include>
 
-<c:if  test="${test == ''}">
+<c:if  test="${error != ''}">
 <div class="alert alert-danger">
 	<h1>Login Failed</h1>
 </div>
@@ -12,7 +12,7 @@
 
 
 
-<form action="welcome" method="post" class="form-horizontal">
+<form action="login" method="post" class="form-horizontal">
 	<input type="text" value="" placeholder="Enter WeChat Number"
 		class="form-control;col-xs-3" name="wechatnumber"> <br /> <br />
 	<input type="password" value="" placeholder="Enter Password"
