@@ -13,30 +13,28 @@
 			<th>Img</th>
 			<th>Quantity</th>
 		</tr>
-		<tr>
-			<td><select name="item1">
+		<tr id="trorder1">
+			<td><select name="order1">
 					<c:forEach items="${itemsList}" var="item">
 						<option value="${item.id}|${item.price}|${item.imgLink}">
 						${item.name}
 						</option>
 					</c:forEach>
 			</select></td>
-			<td><span name="item1Price"></span></td>
-			<td><img name="item1Img" src="" /></td>
-
-
-
-			<td><select name="quantity1"><c:forEach var="i"
+			<td><span name="order1Price"></span></td>
+			<td><img name="order1Img" src="" /></td>
+			<td><select name="order1Quantity"><c:forEach var="i"
 						begin="1" end="10">
 						<option value="${i}">${i}</option>
 					</c:forEach></select></td>
 		</tr>
 	</table>
-	<input type="button" value="Add one more">
+	<input type="button" value="Add one more" id="addOneMore">
 	<img src="<s:url value="/resources/images/yapei.jpg" />" />
 </form>
 
 <script type="text/javascript">
+	var count=1;	
 	$('select').on('change', function() {
 		var selectid = this.name;
 		var item = this.value.split('|');
@@ -46,5 +44,19 @@
 		$("span[name=" + selectid + "Price]").html(price);
 		$("img[name=" + selectid + "Img]").attr("src", imgLink);
 	});
+
+	$('#addOneMore').click(function() {
+        count=count+1;
+		var tempStr= $( "#trorder1" ).clone().html().replace('order1','order'+count);
+        tempStr= tempStr.replace('order1','order'+count);
+        tempStr= tempStr.replace('order1','order'+count);
+        tempStr= tempStr.replace('order1','order'+count);
+        //console.log(tempStr);;
+        $( ".table" ).append("<tr name='trorder"+count+"' >"+tempStr+"</tr>" );
+        //.replace('item1','item'+count).appendTo( ".table" );
+	});
+	
+
+	
 </script>
 <jsp:include page="bottom.jsp" />
